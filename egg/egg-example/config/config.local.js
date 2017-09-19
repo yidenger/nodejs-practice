@@ -11,4 +11,9 @@ module.exports = {
     username: 'root',
     password: '123456',
   },
+  security: {
+    csrf: {
+      enable: false,
+    },
+  },
 };

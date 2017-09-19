@@ -41,6 +41,7 @@ module.exports = app => {
     last_sign_in_at: {
       allowNull: false,
       type: DATE,
+      defaultValue: new Date(),
       comment: '最后登录时间',
     },
   }, {

@@ -7,13 +7,14 @@ module.exports = app => {
       this.ctx.body = users;
     }
     async new() {
-      await this.ctx.model.
-      this.ctx.body = {};
+      this.ctx.body = [];
     }
     async show() {
       this.ctx.body = 'user no: ' + this.ctx.params.id;
     }
-    async cretate() {
+    async create() {
+      app.logger.info(this.ctx.request.body);
+      await this.ctx.model.User.create(this.ctx.request.body);
       this.ctx.body = {};
     }
     async update() {
