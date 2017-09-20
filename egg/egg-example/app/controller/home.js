@@ -12,6 +12,10 @@ module.exports = app => {
     async me() {
       this.ctx.body = `my name is ${this.ctx.query.name}`;
     }
+    async time() {
+      const date = new Date();
+      this.ctx.body = `${date} ------> ${this.ctx.helper.format(date)}`
+    }
   }
   return HomeController;
 };

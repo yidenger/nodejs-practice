@@ -7,7 +7,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1505734858283_2109';
 
   // add your config here
-  config.middleware = [];
+  config.middleware = [ 'errorHandler' ];
 
   return config;
 };
