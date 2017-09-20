@@ -1,4 +1,5 @@
 const sequelize = require('sequelize');
+const logger = require('../lib/logger').label('middleware');
 
 module.exports = {
   crossOrigin: async(ctx, next) => {
