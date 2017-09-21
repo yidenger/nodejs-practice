@@ -51,9 +51,9 @@ module.exports = {
             code: ctx.status,
             message: 'Internal Server Error'
           }
-          if (!utils.isProduction()) {
-            errorBody.message = (err && err.message) || errorBody.message
-          }
+          // if (!utils.isProduction()) {
+          //   errorBody.message = (err && err.message) || errorBody.message
+          // }
           ctx.body = errorBody
         }
       }

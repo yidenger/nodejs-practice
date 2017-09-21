@@ -5,13 +5,26 @@
  */
 
 const app = require('../app');
-const debug = require('debug')('demo:server');
 const http = require('http');
+
+const models = require('../model');
+const services = require('../service');
+
+const constv = require('../config/constv');
+const logger = require('../lib/logger');
+
+app.constv = constv;
+app.logger = logger;
+app.models = models;
+app.services = services;
 
 (async () => {
   const port = normalizePort(process.env.PORT || '3000');
 
   const server = http.createServer(app.callback());
+
+  // init work
+  initDatabase();
 
   server.listen(port);
   server.on('error', onError);
@@ -80,3 +93,7 @@ const http = require('http');
   .catch((err) => {
     console.log(err);
   });
+
+function initDatabase() {
+  models.db.sync({ force: false });
+}
