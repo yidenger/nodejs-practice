@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
 const logger = require('./logger').label('libs:db');
 const config = require('../config');
-const env = config.env
 
-console.log('DB_URL:||' + env.DB_URL)
+const env = config.env;
+
+console.log(`DB_URL:||${  env.DB_URL}`);
 module.exports = new Sequelize(env.DB_URL, {
   dialect: 'mysql',
   dialectOptions: {
@@ -16,10 +17,10 @@ module.exports = new Sequelize(env.DB_URL, {
     maxIdleTime: config.database.maxIdleTime,
   },
   query: {
-    raw: true
+    raw: true,
   },
-  logging: function (msg) {
-    // 需要的时候开启trace层级的调试
-    logger.debug(msg)
-  }
-})
+  benchmark: true,
+  logging: (msg, ms) => {
+    logger.debug(`${msg}   (${ms}ms)`);
+  },
+});
