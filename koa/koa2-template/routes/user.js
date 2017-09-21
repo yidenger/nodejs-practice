@@ -3,6 +3,7 @@ const router = require('koa-router')();
 router.prefix('/user');
 
 router.get('/', async (ctx) => {
+  ctx.app.logger.info('***user***');
   let result = null;
   if (ctx.query.name) {
     result = await ctx.app.models.user.findByName(ctx.query.name);

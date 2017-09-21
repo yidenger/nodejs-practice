@@ -6,7 +6,8 @@ const json = require('koa-json');
 const load = require('./lib/load');
 const middleware = require('./middleware');
 
-app.use(require('koa-static')(`${__dirname  }/public`));
+app.use(require('koa-static')(`${__dirname}/public`));
+
 app.use(middleware.crossOrigin);
 app.use(middleware.errorHandler);
 app.use(middleware.requestLogger);
@@ -15,7 +16,7 @@ app.use(koaBody({
   files: true,
   multipart: true,
   fields: true,
-  formidable: { uploadDir: `${__dirname  }/public/upload` },
+  formidable: { uploadDir: `${__dirname}/public/upload` },
 }));
 app.use(json());
 
