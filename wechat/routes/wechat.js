@@ -10,7 +10,7 @@ router.get('/wxLogin', async (ctx) => {
   ctx.app.logger.info('***user***');
   const url = client.getAuthorizeURL('wechat.moonweilan/wx/callback', 'state', 'snsapi_userinfo');
   ctx.app.logger.info(url);
-  ctx.redirect = (url);
+  ctx.redirect(url);
 });
 
 router.get('/callback', async (ctx) => {
